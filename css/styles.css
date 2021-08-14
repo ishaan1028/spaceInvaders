@@ -86,6 +86,7 @@ body {
   width: 440px;
   margin: -164px 0 0 -260px;
   animation: fadeIn 1.5s;
+  box-shadow: 0 0 10px #000000;
 }
 
 @keyframes fadeIn {

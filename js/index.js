@@ -1,4 +1,4 @@
-let start;
+let start,flag=1,flagMain=1;
       const hero = {
         left: 575,
         top: 700,
@@ -21,6 +21,14 @@ let start;
         { left: 700, top: 175 },
         { left: 800, top: 175 },
         { left: 900, top: 175 },
+        { left: 200, top: 250 },
+        { left: 300, top: 250 },
+        { left: 400, top: 250 },
+        { left: 500, top: 250 },
+        { left: 600, top: 250 },
+        { left: 700, top: 250 },
+        { left: 800, top:250 },
+        { left: 900, top: 250 },
       ];
 
       let missiles = [];
@@ -68,9 +76,41 @@ let start;
         }
       };
       function moveEnemies() {
-        for (let enemy = 0; enemy < enemies.length; enemy++) {
-          enemies[enemy].top += 3;
+
+         for (let enemy = 0; enemy < enemies.length; enemy++) {
+            if(enemies[enemy].left>1120){
+              flagMain=0
+              break;
+            }
+            else if(enemies[enemy].left<50){
+              flagMain=1
+              flag=1
+              break;
+            }
+          }
+
+
+        if(flagMain&&flag){
+          for (let enemy = 0; enemy < enemies.length; enemy++) {
+            enemies[enemy].top += 2;
+
+            enemies[enemy].left+=3;
+          }
+
         }
+        else{
+          flag=0;
+          for (let enemy = 0; enemy < enemies.length; enemy++) {
+          
+            enemies[enemy].top += 2;
+
+            enemies[enemy].left-=3;
+          
+          
+          }
+
+        }
+        
       }
       function drawEnemies() {
         document.querySelector("#enemies").innerHTML = "";
